@@ -6,6 +6,8 @@ authors = ["Andrey <Bakarbyikov@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
+loguru = "^0.6.0"
+python-telegram-bot = {version = "^20.0a0", allow-prereleases = true}
 
 [tool.poetry.dev-dependencies]
 
