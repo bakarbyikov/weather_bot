@@ -1,16 +1,16 @@
-from datetime import datetime
-from dataclasses import dataclass
-from enum import Enum
 import json
-from json.decoder import JSONDecodeError
-import ssl
 import os
+import ssl
+from dataclasses import dataclass
+from json.decoder import JSONDecodeError
 from typing import Literal
-from urllib.request import urlopen
 from urllib.error import URLError
+from urllib.request import urlopen
 
-from coordinates import Coordinates
+from dotenv import load_dotenv
+
 import config
+from coordinates import Coordinates
 from exceptions import ApiServiceError
 
 Celsius = float
@@ -25,7 +25,7 @@ class Weather:
     wind: Meter_per_second
     gust: Meter_per_second
 
-
+load_dotenv()
 WEATHERAPI_KEY = os.getenv('WEATHERAPI_KEY')
 if not WEATHERAPI_KEY:
     raise ApiServiceError("Cant find servise api key")
