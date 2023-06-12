@@ -1,13 +1,13 @@
-import os
 import logging
-import re
-from urllib import response
-from telegram import Update, InlineQueryResultArticle, InputTextMessageContent
-from telegram.ext import (filters, MessageHandler, ApplicationBuilder, 
-                          CommandHandler, CallbackContext, InlineQueryHandler)
+import os
 
-from my_logger import InterceptHandler
+from dotenv import load_dotenv
+from telegram import Update
+from telegram.ext import (ApplicationBuilder, CallbackContext, CommandHandler,
+                          MessageHandler, filters)
+
 from exceptions import *
+from my_logger import InterceptHandler
 from weather import form_weather
 
 logging.basicConfig(handlers=[InterceptHandler()], level=logging.INFO)
@@ -47,6 +47,7 @@ async def location(update: Update, context: CallbackContext.DEFAULT_TYPE):
 
 
 if __name__ == '__main__':
+    load_dotenv()
     TOKEN = os.getenv('TOKEN')
     if not TOKEN:
         raise TokenNotFound
